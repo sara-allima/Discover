@@ -1,0 +1,262 @@
+* {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+
+  padding: 0;
+  margin: 0;
+  
+  box-sizing: border-box;
+}
+
+/*Variáveis*/
+
+:root {
+  --text-color: white;
+  --bg-url: url(assets/bg-mobile.jpg); 
+  --border-color: rgba(255, 255, 255, 0.5);
+  --bg-button-color: rgba(255, 255, 255, 0.1);
+  --border-color-hover: rgba(255, 255, 255, 0.677);
+  --bg-button-hover: rgba(255, 255, 255, 0.05);
+  --bg-sociallink-hover:  rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(assets/moon-stars.svg);
+
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(assets/bg-mobile-light.jpg);
+  --border-color: rgba(0, 0, 0, 0.5);
+  --bg-button-color: rgba(0, 0, 0, 0.05);
+  --border-color-hover: black;
+  --bg-button-hover: rgba(0, 0, 0, 0.02);
+  --bg-sociallink-hover: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(assets/sun.svg);
+}
+
+/*Variáveis*/
+
+body {
+  /*background-image: url(assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+  
+  /* atalho background: color image repeat posicion/size */
+  background: var(--bg-url) no-repeat top center/cover;
+
+  height: 100vh; /*pega 100% da viewport*/
+}
+
+
+#container {
+  width: 100%;
+  height: 44.5rem;
+
+  max-width: 588px;
+  
+  /*border: 0.063rem solid red;*/
+  
+  margin: 3.5rem auto 3.5rem;
+  padding: 0rem 1.5rem;
+}
+
+#profile {
+  text-align: center;
+  
+  /*border: solid 1px pink;*/
+}
+
+#profile p {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+
+}
+
+/*Switch*/
+#switch {
+  width: 4rem; /*Deixou o switch do tamanaho do track para arrumar o butão*/
+
+  margin: auto;
+
+  /*border: 1px solid blue;*/
+
+  position: relative;
+}
+
+#switch button {
+  width: 2rem;
+  height: 2rem;
+  
+  background:  white var(--switch-bg-url) no-repeat center;
+  
+  border: 0;
+  border-radius: 50%;
+  
+  position: absolute; /*Faz sobreposição de camadas*/
+  z-index: 0; /*Camada que o button está*/
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
+  animation: slide-back 0.4s;
+}
+
+#switch button:hover {
+  outline: 0.5rem solid var(--bg-sociallink-hover);
+}
+
+.light #switch button {
+  /*left: 0;
+  left: inicial*/
+  animation: slide-in 0.5s forwards; /*animação criada no final da página. 
+  
+  forwards é a regra para manter a animação na posição final e não voltar para o começo*/
+}
+
+#switch span {
+  display: block;
+  
+  width: 4rem;
+  height: 1.5rem;
+
+  
+
+  background: var(--bg-button-color);
+
+  border: 1px solid var(--border-color);
+  border-radius: 624.938rem;
+
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/*Switch*/
+
+/*Links*/
+
+#links {
+  /*border: 1px solid lightgreen;*/
+
+  padding: 1.5rem 0;
+}
+
+ul {
+  list-style: none; /*Tira os pontinhos da lista*/
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+li {
+  /*border: solid 1px white;*/
+
+  text-align: center;
+
+  padding: 1rem;
+  
+  border-color: var(--border-color);
+  border-radius: 0.5rem;
+
+  background-color: var(--bg-button-color);
+
+  -webkit-backdrop-filter: blur(4px);
+
+  transition: background .5s;
+}
+
+li:hover {
+  border: solid 1.5px var(--border-color-hover);
+  background: var(--bg-button-hover);
+
+}
+
+a {
+  text-decoration: none;
+}
+
+/*Links*/
+
+/*Social Links*/
+#social-links {
+  /*border: 1px solid yellow;*/
+
+  display: flex;
+  
+  justify-content: center; /*Usado junto com o flex para centralizar os filhos*/
+
+  padding: 1.5rem;
+
+  font-size: 1.5rem; /*O tamanho dos icons*/
+}
+
+#social-links a {
+  padding: 1rem;
+  
+  display: flex;
+  justify-content: center; /*Deixar os icons centralizados quando aplicar o hover*/
+  
+  border-radius: 50%;
+  
+  transition: background 0.3s;
+}
+
+#social-links a:hover {
+  background-color: var(--bg-sociallink-hover);
+
+}
+
+/*Social Links*/
+
+/*Footer*/
+
+footer {
+  /*border: solid 1px purple;*/
+
+  padding: 1.5rem;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: underline;
+  font-size: 0.875rem;
+}
+
+/*Footer*/
+
+/*media queries*/
+@media (min-width: 700px) { /*quando passar de 700px*/
+  :root { /*darkmode muda*/
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+
+  .light { /*light mode muda*/
+    --bg-url: url(./assets/bg-desktop-light.jpg)
+  }
+}
+
+/*animations*/
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
